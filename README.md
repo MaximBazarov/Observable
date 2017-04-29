@@ -13,19 +13,19 @@ class SomeClass {
 /// ... some other place
 
 let some = SomeClass()
-let unsubscribe = some.ValueNeedsObserving.subscribe { v in
+let unsubscribeFromValueNeedsObserving = some.ValueNeedsObserving.subscribe { v in
     print(v)
 }
 
 /// ... later unsubscribe if needed
 
-unsubscribe()
+unsubscribeFromValueNeedsObserving()
 ```
 
 ## Needs
  * Red tests
  
 ## Don't like 
-* Signatures like Observable<Int?>(7) looks ugly to me, may be possible better design
+* Signatures like Observable<Int?>(7) looks ugly to me, may be better design is possible
 
 

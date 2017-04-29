@@ -7,17 +7,14 @@ Any proposals, suggestions, issues, PRs are welcome
 
 ```swift
 class SomeClass {
-	
-	let ValueNeedsObserving = Observable<Int?>(7)
-	
-
+    let ValueNeedsObserving = Observable<Int?>(7)
 }
 
 /// ... some other place
 
 let some = SomeClass()
 let unsubscribe = some.ValueNeedsObserving.subscribe { v in
-            print(v)
+    print(v)
 }
 
 /// ... later unsubscribe if needed

@@ -27,7 +27,7 @@ class ObservableTests: XCTestCase {
         
         XCTAssertEqual(result.count, count)
     }
-
+    
     func testAdd10ObserversAndChangeValue10Times_ShouldBe100Values() {
         let sut = Observable<String>("sut")
         var result = [String]()
@@ -47,5 +47,26 @@ class ObservableTests: XCTestCase {
         XCTAssertEqual(result.count, 100)
     }
     
-
+    func testSendValue100TimesOnRandomThread_SumShouldBe100xValue() {
+        let sut = Observable<Int>(8)
+        let lock = DispatchQueue(label: "ObservableTest.lockQueue")
+        var result = 0
+    
+        let _ = sut.subscribe { v in
+            lock.async {
+                result += v
+            }
+        }
+    
+        
+        DispatchQueue.concurrentPerform(iterations: 100) { _ in
+            sut.value = 2
+        }
+        
+        
+        lock.async {
+            XCTAssert(result == 200)
+        }
+    }
+    
 }

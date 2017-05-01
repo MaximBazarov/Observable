@@ -47,26 +47,60 @@ class ObservableTests: XCTestCase {
         XCTAssertEqual(result.count, 100)
     }
     
-    func testSendValue100TimesOnRandomThread_SumShouldBe100xValue() {
-        let sut = Observable<Int>(8)
+    func testChangeValue101TimesOnRandomThread_SumObservedShouldBeEqualSumOfSended() {
+        let sut = Observable<Int>(0)
         let lock = DispatchQueue(label: "ObservableTest.lockQueue")
         var result = 0
-    
+        var expected = 0
+        (0...100).forEach { (i) in
+            expected += i
+        }
+        
         let _ = sut.subscribe { v in
             lock.async {
                 result += v
             }
         }
+        
+        DispatchQueue.concurrentPerform(iterations: 101) { iteration in
+            sut.value = iteration
+        }
+        
+        lock.sync {
+            
+            print(expected)
+            XCTAssertEqual(result, expected)
+        }
+    }
     
+    func testChangeValuesOnRandomThread_OrderObservedShouldBeSameAsSended() {
+        let sut = Observable<Int>(0)
+        let lock = DispatchQueue(label: "ObservableTest.lockQueue")
+        var result = [Int]()
+        var expected = [Int]()
         
-        DispatchQueue.concurrentPerform(iterations: 100) { _ in
-            sut.value = 2
+        let _ = sut.subscribe { v in
+            lock.async {
+                result.append(v)
+            }
         }
         
-        
-        lock.async {
-            XCTAssert(result == 200)
+        DispatchQueue.concurrentPerform(iterations: 1000) { iteration in
+            lock.sync {
+                sut.value = iteration
+                expected.append(iteration)
+            }
         }
+        
+        lock.sync {
+            XCTAssertEqual(result, expected)
+        }
+    }
+    
+    func testChangeValue_ObservableValueShouldBeEqualNewValue() {
+        let sut = Observable<Int>(0)
+        sut.value = 10
+        XCTAssertEqual(sut.value, 10)
     }
     
 }

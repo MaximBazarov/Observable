@@ -32,11 +32,13 @@ public final class Observable<T> {
         }
         
         set {
-            lock.sync {
-                for o in observers.allObjects {
-                    o.handler(newValue)
-                }
+            let observers: [Observer] = lock.sync { () -> [Observer] in
                 self._value = newValue
+                return self.observers.allObjects
+            }
+            
+            for observer in observers {
+                observer.handler(newValue)
             }
         }
         
@@ -55,7 +57,7 @@ public final class Observable<T> {
             self.handler = handler
         }
     }
-
+    
     private let lock = DispatchQueue(label: "Observable.lockQueue")
     
     private var observers = NSHashTable<Observer>()
@@ -65,5 +67,4 @@ public final class Observable<T> {
             self?.observers.remove(observer)
         }
     }
-    
 }

@@ -10,6 +10,7 @@
 		1B4411E21EB45CF300A3CD10 /* Observable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B4411D81EB45CF300A3CD10 /* Observable.framework */; };
 		1B4411E71EB45CF300A3CD10 /* ObservableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4411E61EB45CF300A3CD10 /* ObservableTests.swift */; };
 		1B4411E91EB45CF300A3CD10 /* Observable.h in Headers */ = {isa = PBXBuildFile; fileRef = 1B4411DB1EB45CF300A3CD10 /* Observable.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1BCA33611EB86E9B00FD24DC /* ObservableThreadSafetyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BCA33601EB86E9B00FD24DC /* ObservableThreadSafetyTests.swift */; };
 		8F573335F8B6FDFC51AE5B0E /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5730B70D9B10565557AF19 /* Observable.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		1B4411E11EB45CF300A3CD10 /* ObservableTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ObservableTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B4411E61EB45CF300A3CD10 /* ObservableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableTests.swift; sourceTree = "<group>"; };
 		1B4411E81EB45CF300A3CD10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BCA33601EB86E9B00FD24DC /* ObservableThreadSafetyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableThreadSafetyTests.swift; sourceTree = "<group>"; };
 		8F5730B70D9B10565557AF19 /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 		1B4411E51EB45CF300A3CD10 /* ObservableTests */ = {
 			isa = PBXGroup;
 			children = (
+				1BCA33601EB86E9B00FD24DC /* ObservableThreadSafetyTests.swift */,
 				1B4411E61EB45CF300A3CD10 /* ObservableTests.swift */,
 				1B4411E81EB45CF300A3CD10 /* Info.plist */,
 			);
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BCA33611EB86E9B00FD24DC /* ObservableThreadSafetyTests.swift in Sources */,
 				1B4411E71EB45CF300A3CD10 /* ObservableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,6 +404,7 @@
 				1B4411EE1EB45CF300A3CD10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B4411EF1EB45CF300A3CD10 /* Build configuration list for PBXNativeTarget "ObservableTests" */ = {
 			isa = XCConfigurationList;
@@ -408,6 +413,7 @@
 				1B4411F11EB45CF300A3CD10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

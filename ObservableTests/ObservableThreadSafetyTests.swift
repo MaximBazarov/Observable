@@ -11,12 +11,6 @@ import XCTest
 
 class ObservableThreadTests: XCTestCase {
     
-    // MARK: Atomic helper
-    
-   
-    
-    // MARK: Tests
-    
     func testChangeValue101TimesOnRandomThread_SumObservedShouldBeEqualSumOfSended() {
         let sut = Observable<Int>(0)
         let lock = DispatchQueue(label: "ObservableTest.lockQueue")

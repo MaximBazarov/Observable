@@ -5,7 +5,7 @@
 
 import Foundation
 
-public typealias CancelSubscription = (Void) -> (Void)
+public typealias CancelSubscription = () -> (Void)
 
 public final class Observable<T: Comparable> {
     
@@ -30,7 +30,6 @@ public final class Observable<T: Comparable> {
         }
         return { [weak self] in self?.removeObserver(observer: observer) }
     }
-    
     
     /// Value
     private var _value: T

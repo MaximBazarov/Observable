@@ -12,7 +12,7 @@ import XCTest
 class ObservableThreadTests: XCTestCase {
     
     func testChangeValue101TimesOnRandomThread_SumObservedShouldBeEqualSumOfSended() {
-        let sut = Observable<Int>(0)
+        let sut = Observable(0)
         let lock = DispatchQueue(label: "ObservableTest.lockQueue")
         var result = 0
         var expected = 0
@@ -38,7 +38,7 @@ class ObservableThreadTests: XCTestCase {
     }
     
     func testChangeValuesOnRandomThread_OrderObservedShouldBeSameAsSent() {
-        let sut = Observable<Int>(0)
+        let sut = Observable(0)
         let lock = DispatchQueue(label: "ObservableTest.lockQueue")
         var result = [Int]()
         var expected = [Int]()
@@ -62,7 +62,7 @@ class ObservableThreadTests: XCTestCase {
     }
     
     func disabledTestIncrementValueOnRandomThread_ValueShouldBeIncremented() {
-        let sut = Observable<Int>(0)
+        let sut = Observable(0)
         var expected = 0
         (0...1000).forEach { (i) in
             expected += i
@@ -81,7 +81,7 @@ class ObservableThreadTests: XCTestCase {
     }
     
     func disabledTestRecursiveValueUpdate() {
-        let sut = Observable<Int>(0)
+        let sut = Observable(0)
         
         let expected = 10
         var actual = 0

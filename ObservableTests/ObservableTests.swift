@@ -13,7 +13,8 @@ class ObservableTests: XCTestCase {
     
     func testAdd10ObserversAndChangeValue_ShouldBe10Values() {
         let count = 10
-        let sut = Observable<String>("sut")
+        let sut = Observable("sut")
+        
         var result = [String]()
         var unsubscribeTable = [Int: CancelSubscription]()
         (1...count).forEach({ (index) in
@@ -29,7 +30,7 @@ class ObservableTests: XCTestCase {
     }
     
     func testAdd10ObserversAndChangeValue10Times_ShouldBe100Values() {
-        let sut = Observable<String>("sut")
+        let sut = Observable("sut")
         var result = [String]()
         var unsubscribeTable = [Int: CancelSubscription]()
         (1...10).forEach({ (index) in
@@ -48,20 +49,20 @@ class ObservableTests: XCTestCase {
     }
     
     func testChangeValue_ObservableValueShouldBeEqualNewValue() {
-        let sut = Observable<Int>(0)
+        let sut = Observable(0)
         sut.value = 10
         XCTAssertEqual(sut.value, 10)
     }
     
     func testIncrementValue_ValueShouldBeIncremented() {
-        let sut = Observable<Int>(0)
+        let sut = Observable(0)
         sut.value = sut.value + 10
         XCTAssertEqual(sut.value, 10)
     }
     
 
     func testSubscribeToConditionValue_ShouldCallsAndOnlyForCondition() {
-        let sut = Observable<Int>(0)
+        let sut = Observable(0)
         let expectedCallsCount = 100
         var callsCount = 0
         
